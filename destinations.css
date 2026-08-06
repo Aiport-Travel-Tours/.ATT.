@@ -1,0 +1,273 @@
+/* =============================================================
+   destinations.css — pages Maroc & La Mecque
+   S'appuie sur les variables et classes définies dans ATT.css
+   (charger ATT.css AVANT ce fichier)
+============================================================= */
+
+/* ---------- fil d'ariane ---------- */
+.breadcrumb{
+  padding:16px 0;
+  font-size:.85rem;
+  color:#4a5468;
+}
+.breadcrumb a{color:var(--azure); font-weight:500;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{margin:0 8px; opacity:.5;}
+
+/* ---------- bannière de page ---------- */
+.page-hero{
+  position:relative;
+  overflow:hidden;
+  color:var(--ivory);
+  padding:110px 0 140px;
+  text-align:center;
+  background-color:var(--navy-900);
+  background-image:
+  linear-gradient(rgba(13,35,64,0.55), rgba(13,35,64,0.62)),
+  url("ATT logo.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+}
+.page-hero .eyebrow{color:var(--gold-light); justify-content:center; display:flex;}
+.page-hero h1{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(2.1rem,5vw,3.6rem);
+  margin:0 0 18px;
+  line-height:1.12;
+}
+.page-hero h1 span{
+  color:var(--gold-light);
+  font-family:var(--font-arabic);
+  font-style:italic;
+}
+.page-hero p{
+  max-width:660px;
+  margin:0 auto;
+  color:rgba(246,241,230,.88);
+  font-size:1.08rem;
+}
+
+/* ---------- grands emplacements photo (à remplacer) ---------- */
+.photo-slot{
+  position:relative;
+  min-height:440px;
+  background-size:cover;
+  background-position:center;
+  background-color:var(--ivory-dim);
+  border:1px dashed rgba(19,32,51,.25);
+  border-radius:2px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+.photo-slot img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.photo-slot .photo-slot-tag{display:none;}
+.photo-slot.is-empty .photo-slot-tag{display:inline-block;}
+.photo-slot-tag{
+  margin:14px;
+  padding:6px 12px;
+  background:rgba(13,35,64,.78);
+  color:var(--ivory);
+  font-size:.78rem;
+  font-family:var(--font-body);
+  border-radius:2px;
+  letter-spacing:.02em;
+  position:relative;
+  z-index:1;
+}
+.photo-slot--tall{min-height:520px;}
+.photo-slot--short{min-height:320px;}
+@media (max-width:760px){
+  .photo-slot{min-height:280px;}
+  .photo-slot--tall{min-height:320px;}
+  .photo-slot--short{min-height:220px;}
+}
+
+/* ---------- principes / occasions détaillées ---------- */
+.principle-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  margin-top:56px;
+}
+.principle-card{
+  background:#fff;
+  border:1px solid rgba(19,32,51,.08);
+  border-radius:2px;
+  padding:34px 30px;
+}
+.principle-card .eyebrow{margin-bottom:6px;}
+.principle-card h3{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  color:var(--navy-900);
+  margin:0 0 14px;
+}
+.principle-card p{
+  color:#4a5468;
+  font-size:.95rem;
+  margin:0 0 12px;
+}
+.principle-card p:last-child{margin-bottom:0;}
+
+/* ---------- circuit / éloge ATT ---------- */
+.circuit-panel{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:0;
+  background:var(--navy-900);
+  color:var(--ivory);
+  border-radius:4px;
+  overflow:hidden;
+  margin-top:56px;
+}
+.circuit-copy{padding:52px;}
+.circuit-copy .eyebrow{color:var(--gold-light);}
+.circuit-copy h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  margin:0 0 18px;
+}
+.circuit-copy p{color:rgba(246,241,230,.85); margin:0 0 16px;}
+.circuit-points{display:grid; gap:14px; margin:26px 0 30px;}
+.circuit-points li{
+  padding-left:24px;
+  position:relative;
+  color:rgba(246,241,230,.92);
+  font-size:.95rem;
+}
+.circuit-points li::before{
+  content:"✦";
+  position:absolute; left:0; top:0;
+  color:var(--gold-light);
+}
+.circuit-photo{
+  background-color:var(--navy-800);
+  background-size:cover;
+  background-position:center;
+  min-height:100%;
+}
+@media (max-width:900px){
+  .circuit-panel{grid-template-columns:1fr;}
+  .circuit-photo{min-height:280px;}
+  .circuit-copy{padding:36px 28px;}
+}
+
+/* ---------- villes / sites touristiques ---------- */
+.city-block{margin-top:72px;}
+.city-block:first-of-type{margin-top:56px;}
+.city-block-head{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+}
+.city-block-head h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  color:var(--navy-900);
+  margin:0;
+}
+.city-block-head .city-tagline{
+  color:var(--gold);
+  font-family:var(--font-arabic);
+  font-style:italic;
+  font-size:1rem;
+}
+.city-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  align-items:center;
+}
+.city-layout.reverse .photo-slot{order:2;}
+.city-sites{display:grid; gap:20px;}
+.city-site h4{
+  font-family:var(--font-display);
+  font-size:1.15rem;
+  color:var(--navy-900);
+  margin:0 0 6px;
+}
+.city-site p{margin:0; color:#4a5468; font-size:.94rem;}
+@media (max-width:900px){
+  .city-layout, .city-layout.reverse{grid-template-columns:1fr;}
+  .city-layout.reverse .photo-slot{order:0;}
+}
+
+/* ---------- étapes du pèlerinage (Oumra) ---------- */
+.steps-timeline{
+  display:grid;
+  gap:0;
+  margin-top:56px;
+  counter-reset:step;
+}
+.step-row{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:24px;
+  padding:0 0 40px;
+  position:relative;
+}
+.step-row:last-child{padding-bottom:0;}
+.step-row::before{
+  counter-increment:step;
+  content:counter(step);
+  width:44px;height:44px;
+  border-radius:50%;
+  background:var(--navy-900);
+  color:var(--gold-light);
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-row::after{
+  content:"";
+  position:absolute;
+  left:21px; top:44px; bottom:0;
+  width:2px;
+  background:rgba(19,32,51,.12);
+}
+.step-row:last-child::after{display:none;}
+.step-body h3{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  color:var(--navy-900);
+  margin:0 0 10px;
+}
+.step-body p{color:#4a5468; margin:0; font-size:.96rem;}
+
+/* ---------- lieux saints ---------- */
+.holy-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+  margin-top:56px;
+}
+.holy-card{
+  background:#fff;
+  border:1px solid rgba(19,32,51,.08);
+  border-radius:2px;
+  overflow:hidden;
+}
+.holy-card .holy-body{padding:26px 28px;}
+.holy-card h3{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  color:var(--navy-900);
+  margin:0 0 10px;
+}
+.holy-card p{color:#4a5468; margin:0; font-size:.94rem;}
+@media (max-width:760px){
+  .holy-grid{grid-template-columns:1fr;}
+}

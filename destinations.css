@@ -29,13 +29,17 @@
   background-position:center;
   background-size:contain;
 }
-.page-hero .eyebrow{color:var(--gold-light); justify-content:center; display:flex;}
+.page-hero .eyebrow{
+  color:var(--gold-light); justify-content:center; display:flex;
+  opacity:0; animation:heroFadeUp .8s var(--ease-out) forwards .15s;
+}
 .page-hero h1{
   font-family:var(--font-display);
   font-weight:400;
   font-size:clamp(2.1rem,5vw,3.6rem);
   margin:0 0 18px;
   line-height:1.12;
+  opacity:0; animation:heroFadeUp .9s var(--ease-out) forwards .3s;
 }
 .page-hero h1 span{
   color:var(--gold-light);
@@ -47,6 +51,7 @@
   margin:0 auto;
   color:rgba(246,241,230,.88);
   font-size:1.08rem;
+  opacity:0; animation:heroFadeUp .9s var(--ease-out) forwards .5s;
 }
 
 /* ---------- grands emplacements photo (à remplacer) ---------- */
@@ -271,3 +276,14 @@
 @media (max-width:760px){
   .holy-grid{grid-template-columns:1fr;}
 }
+
+/* ---------- transitions & reveal (pages Maroc / La Mecque) ---------- */
+.principle-card,.holy-card{
+  transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
+}
+.principle-card:hover,.holy-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(13,35,64,.12);
+}
+.circuit-panel{transition:box-shadow .4s var(--ease-out);}
+.step-row{transition:opacity .6s var(--ease-out), transform .6s var(--ease-out);}

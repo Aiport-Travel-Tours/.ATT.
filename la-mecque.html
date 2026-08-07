@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,8 +67,8 @@
     <p class="section-lead center">Nos guides religieux vous accompagnent à chaque étape, pour que vous puissiez
       vous concentrer uniquement sur votre recueillement.</p>
 
-    <div class="steps-timeline">
-      <div class="step-row">
+    <div class="steps-timeline reveal-group">
+      <div class="step-row reveal">
         <div class="step-body">
           <h3>L'Ihram</h3>
           <p>L'état sacré dans lequel entre le pèlerin, marqué par une tenue simple (deux pièces de tissu blanc
@@ -76,21 +76,21 @@
             désigné.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row reveal">
         <div class="step-body">
           <h3>Le Tawaf</h3>
           <p>Sept circumambulations autour de la Kaaba, au cœur de la Masjid al-Haram — le moment le plus
             intense du rituel, vécu dans le recueillement collectif de pèlerins venus du monde entier.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row reveal">
         <div class="step-body">
           <h3>Le Sa'i</h3>
           <p>Sept allers-retours entre les monts Safa et Marwa, en mémoire de la quête d'eau de Hajar pour son
             fils Ismaël — un rappel de persévérance et de confiance.</p>
         </div>
       </div>
-      <div class="step-row">
+      <div class="step-row reveal">
         <div class="step-body">
           <h3>Le Taqsir</h3>
           <p>La coupe (ou le rasage complet pour les hommes) d'une mèche de cheveux, marquant l'accomplissement
@@ -109,8 +109,8 @@
     <p class="section-lead center">Deux villes, un même itinéraire, organisé pour que chaque lieu visité garde
       tout son sens.</p>
 
-    <div class="holy-grid">
-      <article class="holy-card">
+    <div class="holy-grid reveal-group">
+      <article class="holy-card reveal">
         <div class="photo-slot photo-slot--short">
           <img src="masjid-al-haram.jpg" alt="la mecque masjid al haram" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('is-empty');">
           <span class="photo-slot-tag">la-mecque-masjid-al-haram.jpg</span>
@@ -122,7 +122,7 @@
         </div>
       </article>
 
-      <article class="holy-card">
+      <article class="holy-card reveal">
         <div class="photo-slot photo-slot--short">
           <img src="puit-zamzam.jpg" alt="la mecque zamzam" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('is-empty');">
           <span class="photo-slot-tag">la-mecque-zamzam.jpg</span>
@@ -134,7 +134,7 @@
         </div>
       </article>
 
-      <article class="holy-card">
+      <article class="holy-card reveal">
         <div class="photo-slot photo-slot--short">
           <img src="masjid-an-nabawi.jpg" alt="medine masjid an nabawi" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('is-empty');">
           <span class="photo-slot-tag">medine-masjid-an-nabawi.jpg</span>
@@ -146,7 +146,7 @@
         </div>
       </article>
 
-      <article class="holy-card">
+      <article class="holy-card reveal">
         <div class="photo-slot photo-slot--short">
           <img src="quba.jpg" alt="medine quba" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('is-empty');">
           <span class="photo-slot-tag">medine-quba.jpg</span>
@@ -163,7 +163,7 @@
 
 <!-- ===== ACCOMPAGNEMENT ===== -->
 <section class="section section-navy">
-  <div class="wrap circuit-panel" style="background:transparent; margin-top:0;">
+  <div class="wrap circuit-panel reveal" style="background:transparent; margin-top:0;">
     <div class="circuit-copy" style="padding-left:0;">
       <p class="eyebrow">Notre accompagnement</p>
       <h2>Votre Oumra, sans aucune préoccupation logistique</h2>
@@ -215,6 +215,31 @@ nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   nav.classList.remove('open');
   burger.setAttribute('aria-expanded', 'false');
 }));
+
+// ----- Révélation au défilement + ombre du header -----
+document.documentElement.classList.remove('no-js');
+
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && revealEls.length){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('is-visible'));
+}
+
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader){
+  const onScroll = () => siteHeader.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+}
 </script>
 </body>
 </html>
